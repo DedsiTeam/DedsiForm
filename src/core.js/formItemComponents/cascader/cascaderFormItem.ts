@@ -4,6 +4,8 @@ import { ICascaderAttributeConfiguration, CascaderAttributeConfiguration } from 
 
 // 级联选择
 export class CascaderFormItem extends FormItem {
+    // 表单项名称
+    formItemType: string = 'Cascader';
     // 属性配置
     attributeConfiguration: ICascaderAttributeConfiguration = new CascaderAttributeConfiguration();
 }

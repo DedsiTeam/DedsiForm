@@ -6,6 +6,8 @@ import {
 
 // 输入框
 export class InputFormItem extends FormItem {
+    // 表单项名称
+    formItemType: string = 'Input';
     // 基础配置
     basicConfiguration:IInputBasicConfiguration = new InputBasicConfiguration();
     // 属性配置

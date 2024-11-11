@@ -9,9 +9,8 @@ export interface IFormItem {
     id: string;
     // 数据字段值
     dataKey: string;
-
     // 表单项名称
-    formItemName: string;
+    formItemType: string;
 
     // 基础配置
     basicConfiguration:IBasicConfiguration;
@@ -27,7 +26,7 @@ export class FormItem implements IFormItem {
     // 数据字段值
     dataKey: string = '';
     // 表单项名称
-    formItemName: string = '';
+    formItemType: string = '';
 
     // 基础配置
     basicConfiguration:IBasicConfiguration = new BasicConfiguration();
