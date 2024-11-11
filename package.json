@@ -1,5 +1,5 @@
 {
-  "name": "dedsiform",
+  "name": "@dedsi/form",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "element-plus": "^2.8.7",
     "vue": "^3.5.12"
   },
   "devDependencies": {

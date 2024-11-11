@@ -5,6 +5,14 @@ import {
 } from './configurations/public-api.ts'
 
 export interface IFormItem {
+    // 数据Id
+    id: string;
+    // 数据字段值
+    dataKey: string;
+
+    // 表单项名称
+    formItemName: string;
+
     // 基础配置
     basicConfiguration:IBasicConfiguration;
     // 属性配置
@@ -14,6 +22,13 @@ export interface IFormItem {
 }
 
 export class FormItem implements IFormItem {
+    // 数据Id
+    id: string = '';
+    // 数据字段值
+    dataKey: string = '';
+    // 表单项名称
+    formItemName: string = '';
+
     // 基础配置
     basicConfiguration:IBasicConfiguration = new BasicConfiguration();
     // 属性配置
