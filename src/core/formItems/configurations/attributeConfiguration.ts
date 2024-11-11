@@ -19,5 +19,5 @@ export class AttributeConfiguration implements IAttributeConfiguration {
     // 是否支持清除
     isClear: boolean = false;
     // 输入框占位文本
-    placeholder:string = '';
+    placeholder: string = '';
 }
