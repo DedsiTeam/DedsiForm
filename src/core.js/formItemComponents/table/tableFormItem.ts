@@ -7,4 +7,8 @@ export class TableFormItem extends FormItem {
     formItemType: string = 'Table';
     // 属性配置
     attributeConfiguration: ITableAttributeConfiguration = new TableAttributeConfiguration();
+
+    createInputProps() {
+        return {}
+    }
 }

@@ -7,4 +7,8 @@ export class DatePickerFormItem extends FormItem {
     formItemType: string = 'DatePicker';
     // 属性配置
     attributeConfiguration: IDatePickerAttributeConfiguration = new DatePickerAttributeConfiguration();
+
+    createInputProps() {
+        return {}
+    }
 }

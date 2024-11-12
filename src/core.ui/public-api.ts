@@ -1,1 +1,2 @@
-export * from '../core.ui/components/public-api.ts'
+export * from './components/public-api.ts'
+export * from './factory/public-api.ts'

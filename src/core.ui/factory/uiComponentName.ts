@@ -14,3 +14,6 @@ export interface IUiComponentName {
     Select: string;
     Table: string;
 }
+
+
+export const UiComponentNameKey = 'UiComponentName'

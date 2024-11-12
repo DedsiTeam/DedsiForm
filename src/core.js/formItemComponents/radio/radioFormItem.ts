@@ -5,8 +5,13 @@ import {
 } from "./configurations/radioAttributeConfiguration.ts";
 
 export class RadioFormItem extends FormItem {
+
     // 表单项名称
     formItemType: string = 'Radio';
     // 属性配置
     attributeConfiguration: IRadioAttributeConfiguration = new RadioAttributeConfiguration();
+
+    createInputProps() {
+        return {}
+    }
 }

@@ -12,4 +12,13 @@ export class InputFormItem extends FormItem {
     basicConfiguration:IInputBasicConfiguration = new InputBasicConfiguration();
     // 属性配置
     attributeConfiguration: IInputAttributeConfiguration = new InputAttributeConfiguration();
+
+    createInputProps() {
+        return {
+            placeholder: this.attributeConfiguration.placeholder,
+            disabled: this.attributeConfiguration.isDisable,
+            readonly: this.attributeConfiguration.isReadOnly,
+            clearable: this.attributeConfiguration.isClear
+        }
+    }
 }

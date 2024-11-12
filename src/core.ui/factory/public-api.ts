@@ -1,2 +1,2 @@
-export * from './formFactory.ts'
+export * from './coreNodeFactory.ts'
 export * from './uiComponentName.ts'

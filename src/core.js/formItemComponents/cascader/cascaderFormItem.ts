@@ -8,4 +8,8 @@ export class CascaderFormItem extends FormItem {
     formItemType: string = 'Cascader';
     // 属性配置
     attributeConfiguration: ICascaderAttributeConfiguration = new CascaderAttributeConfiguration();
+
+    createInputProps() {
+        return {}
+    }
 }

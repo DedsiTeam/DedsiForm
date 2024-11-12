@@ -4,8 +4,13 @@ import { ISelectAttributeConfiguration, SelectAttributeConfiguration } from './c
 
 // 下拉框数据源
 export class SelectFormItem extends FormItem {
+
     // 表单项名称
     formItemType: string = 'Select';
     // 属性配置
     attributeConfiguration: ISelectAttributeConfiguration = new SelectAttributeConfiguration();
+
+    createInputProps() {
+        return {}
+    }
 }
