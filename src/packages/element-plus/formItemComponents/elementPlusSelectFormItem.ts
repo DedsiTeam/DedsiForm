@@ -5,7 +5,8 @@ import { ElOption } from 'element-plus';
 export class ElementPlusSelectFormItem extends SelectFormItem {
     // 创建 表单项 VNode
     createFormItemVNode(uiComponent: Component, formModel: Reactive<any>) {
-        const props = this.createInputProps();
+        const props = this.createInputComponentProps();
+        const elOptions = this.attributeConfiguration.optionData.map((option: any) => createVNode(ElOption, { value: option.value, label: option.label }));
         return createVNode(
             uiComponent,
             {
@@ -15,7 +16,7 @@ export class ElementPlusSelectFormItem extends SelectFormItem {
                 },
                 ...props
             },
-            () => this.attributeConfiguration.optionData.map((option: any) => createVNode(ElOption, { value: option.value, label: option.label }))
+            () => elOptions
         );
     }
 }

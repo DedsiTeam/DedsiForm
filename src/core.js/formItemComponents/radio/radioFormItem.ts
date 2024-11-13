@@ -11,7 +11,7 @@ export class RadioFormItem extends FormItem {
     // 属性配置
     attributeConfiguration: IRadioAttributeConfiguration = new RadioAttributeConfiguration();
 
-    createInputProps() {
+    createInputComponentProps() {
         return {}
     }
 }

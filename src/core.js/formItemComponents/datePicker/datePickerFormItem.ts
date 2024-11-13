@@ -8,7 +8,10 @@ export class DatePickerFormItem extends FormItem {
     // 属性配置
     attributeConfiguration: IDatePickerAttributeConfiguration = new DatePickerAttributeConfiguration();
 
-    createInputProps() {
-        return {}
+    createInputComponentProps() {
+        const superInputProps = super.createInputComponentProps();
+        return {
+            ...superInputProps,
+        }
     }
 }

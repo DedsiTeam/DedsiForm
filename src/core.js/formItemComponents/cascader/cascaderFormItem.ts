@@ -9,8 +9,8 @@ export class CascaderFormItem extends FormItem {
     // 属性配置
     attributeConfiguration: ICascaderAttributeConfiguration = new CascaderAttributeConfiguration();
 
-    createInputProps() {
-        const superInputProps = super.createInputProps();
+    createInputComponentProps() {
+        const superInputProps = super.createInputComponentProps();
         return {
             ...superInputProps,
             options: this.attributeConfiguration.optionData

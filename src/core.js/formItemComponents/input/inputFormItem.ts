@@ -13,8 +13,8 @@ export class InputFormItem extends FormItem {
     // 属性配置
     attributeConfiguration: IInputAttributeConfiguration = new InputAttributeConfiguration();
 
-    createInputProps() {
-        const superInputProps = super.createInputProps();
+    createInputComponentProps() {
+        const superInputProps = super.createInputComponentProps();
         return {
             ...superInputProps,
         }

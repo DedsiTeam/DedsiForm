@@ -24,7 +24,7 @@ export interface IFormItem {
     verificationConfiguration: IVerificationConfiguration;
 
     // 创建 输入组件需要到 props
-    createInputProps(): Record<string, unknown>;
+    createInputComponentProps(): Record<string, unknown>;
     // 创建 表单项 VNode
     createFormItemVNode(uiComponent: Component, formModel: Reactive<any>): VNode;
 }
@@ -48,7 +48,7 @@ export abstract class FormItem implements IFormItem {
     verificationConfiguration: IVerificationConfiguration = new VerificationConfiguration();
 
     // 创建 输入组件需要到 props
-    createInputProps(): Record<string, unknown> {
+    createInputComponentProps(): Record<string, unknown> {
         return {
             placeholder: this.attributeConfiguration.placeholder,
             disabled: this.attributeConfiguration.isDisable,
@@ -59,7 +59,7 @@ export abstract class FormItem implements IFormItem {
 
     // 创建 表单项 VNode
     createFormItemVNode(uiComponent: Component, formModel: Reactive<any>) {
-        const props = this.createInputProps();
+        const props = this.createInputComponentProps();
         return createVNode(uiComponent, {
             modelValue: formModel[this.dataKey],
             'onUpdate:modelValue': (newValue: any) => {

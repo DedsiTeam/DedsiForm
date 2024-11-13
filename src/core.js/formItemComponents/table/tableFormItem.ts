@@ -8,7 +8,11 @@ export class TableFormItem extends FormItem {
     // 属性配置
     attributeConfiguration: ITableAttributeConfiguration = new TableAttributeConfiguration();
 
-    createInputProps() {
-        return {}
+    // 创建 输入组件需要到 props
+    createInputComponentProps() {
+        const superInputProps = super.createInputComponentProps();
+        return {
+            ...superInputProps
+        }
     }
 }

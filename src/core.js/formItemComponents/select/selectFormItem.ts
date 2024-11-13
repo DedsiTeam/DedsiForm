@@ -11,8 +11,8 @@ export class SelectFormItem extends FormItem {
     attributeConfiguration: ISelectAttributeConfiguration = new SelectAttributeConfiguration();
 
     // 创建 输入组件需要到 props
-    createInputProps() {
-        const superInputProps = super.createInputProps();
+    createInputComponentProps() {
+        const superInputProps = super.createInputComponentProps();
         return {
             ...superInputProps,
             options: this.attributeConfiguration.optionData

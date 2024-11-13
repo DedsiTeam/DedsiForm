@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import { InputFormItem, InputNumberForm, CascaderFormItem } from './core.js/public-api.ts';
-import { ElementPlusSelectFormItem, ElementPlusRadioFormItem } from './packages/element-plus/public-api.ts'
+import { InputFormItem, InputNumberForm, CascaderFormItem, DatePickerFormItem } from './core.js/public-api.ts';
+import { ElementPlusSelectFormItem, ElementPlusRadioFormItem, ElementPlusTableFormItem } from './packages/element-plus/public-api.ts'
 import { reactive } from 'vue';
 
 const item1 = new InputFormItem();
@@ -59,11 +59,25 @@ item4.attributeConfiguration.optionData = [
 const item5 = new ElementPlusRadioFormItem();
 item5.dataKey = 'item5';
 item5.basicConfiguration.labelName = 'item5';
-item5.attributeConfiguration.placeholder = 'item5'
+item5.attributeConfiguration.placeholder = '请输入'
 item5.attributeConfiguration.optionData = [
   {value: 'item5-1', label: 'item5-1'},
   {value: 'item5-2', label: 'item5-2'},
   {value: 'item5-3', label: 'item5-3'},
+];
+
+const item6 = new DatePickerFormItem();
+item6.dataKey = 'item6';
+item6.basicConfiguration.labelName = 'item6';
+item6.attributeConfiguration.placeholder = '请输入'
+
+const item7 = new ElementPlusTableFormItem();
+item7.dataKey = 'item7';
+item7.rowSpan = 24
+item7.attributeConfiguration.columns = [
+  { prop: 'date', label: 'Date' },
+  { prop: 'name', label: 'Name' },
+  { prop: 'address', label: 'Address' },
 ];
 
 const formModel = reactive({
@@ -71,7 +85,14 @@ const formModel = reactive({
   age: undefined,
   homeAddress: undefined,
   item4: undefined,
-  item5: 'item5-3'
+  item5: 'item5-3',
+  item6: '',
+  item7: [
+    {date: '2024', name: 'name1', address: 'address1'},
+    {date: '2024', name: 'name1', address: 'address1'},
+    {date: '2024', name: 'name1', address: 'address1'},
+    {date: '2024', name: 'name1', address: 'address1'},
+  ]
 })
 const formOptions = {
   labelWidth: 200,
@@ -83,6 +104,8 @@ const formItems: any[] = [
   item2,
   item3,
   item4,
-  item5
+  item5,
+  item6,
+  item7
 ]
 </script>

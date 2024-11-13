@@ -5,7 +5,10 @@ import { ElRadio } from 'element-plus';
 export class ElementPlusRadioFormItem extends RadioFormItem {
     // 创建 表单项 VNode
     createFormItemVNode(uiComponent: Component, formModel: Reactive<any>) {
-        const props = this.createInputProps();
+        const props = this.createInputComponentProps();
+
+        const elRadios = this.attributeConfiguration.optionData.map((option: any) => createVNode(ElRadio, { value: option.value, label: option.label }));
+
         return createVNode(
             uiComponent,
             {
@@ -15,7 +18,7 @@ export class ElementPlusRadioFormItem extends RadioFormItem {
                 },
                 ...props
             },
-            () => this.attributeConfiguration.optionData.map((option: any) => createVNode(ElRadio, { value: option.value, label: option.label }))
+            () => elRadios
         );
     }
 }
