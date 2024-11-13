@@ -24,18 +24,22 @@ export class CoreNodeFactory {
         // 输入组件
         const inputComponent = this.findUiComponent(uiComponentNames[formItem.formItemType]);
 
+        // col
+        const colProps = {
+            span: formItem.rowSpan
+        }
+        const colComponent = this.findUiComponent(uiComponentNames.Col);
+
+        if(formItem.rowSpan === 24) {
+            return createVNode(colComponent, colProps, () => formItem.createFormItemVNode(inputComponent, formModel))
+        }
+
         // formItem
         const formItemProps = {
             label: formItem.basicConfiguration.labelName,
             prop: formItem.dataKey
         };
         const formItemComponent = this.findUiComponent(uiComponentNames.FormItem);
-
-        // col
-        const colProps = {
-            span: formItem.rowSpan
-        }
-        const colComponent = this.findUiComponent(uiComponentNames.Col);
 
         return createVNode(
             colComponent,

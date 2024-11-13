@@ -3,13 +3,14 @@
     {{ formModel }}
     <hr />
   </div>
-  <dedsi-form :form-items="formItems" v-model="formModel" :form-options="formOptions" />
+  <dedsi-form ref="dedsiFormRef" :form-items="formItems" v-model="formModel" :form-options="formOptions" />
+  <el-button @click="dianJiClick">点击</el-button>
 </template>
 
 <script setup lang="ts">
 import { InputFormItem, InputNumberForm, CascaderFormItem, DatePickerFormItem } from './core.js/public-api.ts';
 import { ElementPlusSelectFormItem, ElementPlusRadioFormItem, ElementPlusTableFormItem } from './packages/element-plus/public-api.ts'
-import { reactive } from 'vue';
+import {reactive, ref} from 'vue';
 
 const item1 = new InputFormItem();
 item1.dataKey = 'name';
@@ -94,9 +95,21 @@ const formModel = reactive({
     {date: '2024', name: 'name1', address: 'address1'},
   ]
 })
+const formRules = {
+  name: [
+    { required: true, message: item1.attributeConfiguration.placeholder, trigger: 'blur' },
+  ]
+}
 const formOptions = {
   labelWidth: 200,
-  labelSuffix: ':'
+  labelSuffix: ':',
+  rules: formRules
+}
+
+const dedsiFormRef = ref()
+function dianJiClick(){
+  const formRef = dedsiFormRef.value.getFormRef();
+  formRef.validate()
 }
 
 const formItems: any[] = [

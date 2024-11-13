@@ -16,7 +16,7 @@ export class InputFormItem extends FormItem {
     createInputComponentProps() {
         const superInputProps = super.createInputComponentProps();
         return {
-            ...superInputProps,
+            ...superInputProps
         }
     }
 }

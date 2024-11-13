@@ -30,7 +30,6 @@ export interface IFormItem {
 }
 
 export abstract class FormItem implements IFormItem {
-
     // 数据Id
     id: string = '';
     // 数据字段值
