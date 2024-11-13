@@ -10,6 +10,9 @@ export class InputNumberForm extends FormItem {
     attributeConfiguration: IInputNumberAttributeConfiguration = new InputNumberAttributeConfiguration();
 
     createInputProps() {
-        return {}
+        const superInputProps = super.createInputProps();
+        return {
+            ...superInputProps,
+        }
     }
 }

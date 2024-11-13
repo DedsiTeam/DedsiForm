@@ -6,8 +6,12 @@ import { IUiComponentName, UiComponentNameKey } from "../factory/uiComponentName
 export default defineComponent({
     name: 'dedsi-form',
     props: {
+        // 表单对象
         modelValue: Object,
-        formItems: { type: Array, default: () => [] }
+        // 表单项
+        formItems: { type: Array, default: () => [] },
+        // 表单配置
+        formOptions: Object,
     },
     setup(props){
 
@@ -18,11 +22,12 @@ export default defineComponent({
         // 表单
         const formModel = reactive<any>(props.modelValue)
 
+        // 表单配置
         const formProps = {
-            model: formModel
-        }
+            model: formModel,
+            ...props.formOptions
+        };
         const FormComponent = factory.findUiComponent(uiComponentNames.Form);
-
         // 表单项
         const formItemElements = props.formItems.map((item: any) => factory.createFormItemVNode(uiComponentNames, item, formModel));
         // Row

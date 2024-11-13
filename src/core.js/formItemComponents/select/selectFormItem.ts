@@ -10,7 +10,13 @@ export class SelectFormItem extends FormItem {
     // 属性配置
     attributeConfiguration: ISelectAttributeConfiguration = new SelectAttributeConfiguration();
 
+    // 创建 输入组件需要到 props
     createInputProps() {
-        return {}
+        const superInputProps = super.createInputProps();
+        return {
+            ...superInputProps,
+            options: this.attributeConfiguration.optionData
+        }
     }
+
 }

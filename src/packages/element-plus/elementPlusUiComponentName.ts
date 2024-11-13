@@ -12,7 +12,7 @@ export class ElementPlusUiComponentName implements IUiComponentName {
     InputNumber: string =  prefix + 'InputNumber';
     Cascader: string =  prefix + 'Cascader';
     DatePicker: string =  prefix + 'DatePicker';
-    Radio: string =  prefix + 'Radio';
+    Radio: string =  prefix + 'RadioGroup';
     Select: string =  prefix + 'Select';
     Table: string =  prefix + 'Table';
 }

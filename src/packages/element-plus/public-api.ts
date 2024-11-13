@@ -1,7 +1,9 @@
 import { App } from 'vue';
-
 import { CoreUiComponents, UiComponentNameKey } from '../../core.ui/public-api.ts'
 import { ElementPlusUiComponentName } from './elementPlusUiComponentName.ts'
+
+export * from './elementPlusUiComponentName.ts'
+export * from './formItemComponents/public-api.ts'
 
 export const DedsiElementPlusUi = {
     install(app: App) {
@@ -14,3 +16,4 @@ export const DedsiElementPlusUi = {
         })
     }
 }
+

@@ -4,6 +4,8 @@ import {
     IVerificationConfiguration, VerificationConfiguration
 } from './configurations/public-api.ts'
 
+import {createVNode, VNode, Component, Reactive } from 'vue'
+
 export interface IFormItem {
     // 数据Id
     id: string;
@@ -23,9 +25,12 @@ export interface IFormItem {
 
     // 创建 输入组件需要到 props
     createInputProps(): Record<string, unknown>;
+    // 创建 表单项 VNode
+    createFormItemVNode(uiComponent: Component, formModel: Reactive<any>): VNode;
 }
 
 export abstract class FormItem implements IFormItem {
+
     // 数据Id
     id: string = '';
     // 数据字段值
@@ -43,5 +48,24 @@ export abstract class FormItem implements IFormItem {
     verificationConfiguration: IVerificationConfiguration = new VerificationConfiguration();
 
     // 创建 输入组件需要到 props
-    abstract createInputProps(): Record<string, unknown>;
+    createInputProps(): Record<string, unknown> {
+        return {
+            placeholder: this.attributeConfiguration.placeholder,
+            disabled: this.attributeConfiguration.isDisable,
+            readonly: this.attributeConfiguration.isReadOnly,
+            clearable: this.attributeConfiguration.isClear
+        }
+    }
+
+    // 创建 表单项 VNode
+    createFormItemVNode(uiComponent: Component, formModel: Reactive<any>) {
+        const props = this.createInputProps();
+        return createVNode(uiComponent, {
+            modelValue: formModel[this.dataKey],
+            'onUpdate:modelValue': (newValue: any) => {
+                formModel[this.dataKey] = newValue;
+            },
+            ...props
+        })
+    }
 }

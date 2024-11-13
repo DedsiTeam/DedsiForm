@@ -22,7 +22,6 @@ export class CoreNodeFactory {
     // Col --> FormItem --> InputComponent
     createFormItemVNode(uiComponentNames: IUiComponentName, formItem: IFormItem, formModel: Reactive<any>) {
         // 输入组件
-        const inputComponentProps = formItem.createInputProps()
         const inputComponent = this.findUiComponent(uiComponentNames[formItem.formItemType]);
 
         // formItem
@@ -44,16 +43,7 @@ export class CoreNodeFactory {
             () => createVNode(
                 formItemComponent,
                 formItemProps,
-                () => createVNode(
-                    inputComponent,
-                    {
-                        modelValue: formModel[formItem.dataKey],
-                        'onUpdate:modelValue': (newValue: any) => {
-                            formModel[formItem.dataKey] = newValue;
-                        },
-                        ...inputComponentProps
-                    }
-                )
+                () => formItem.createFormItemVNode(inputComponent, formModel)
             )
         )
     }
