@@ -1,55 +1,37 @@
-import {ComponentInternalInstance, getCurrentInstance, Reactive, createVNode } from 'vue'
+import { ComponentInternalInstance, getCurrentInstance, Reactive, createVNode, Component, VNode } from 'vue';
 import { IUiComponentName } from './uiComponentName.ts'
 import { IFormItem } from '../../core.js/public-api.ts'
 
 // 空节点
-const emptyComponent = createVNode('div', {}, '空组件！')
+export const emptyComponent = createVNode('div', {}, '空组件！')
 
+export const NodeFactoryNameKey = 'NodeFactory'
 
-export class CoreNodeFactory {
-    private currentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance;
+export interface ICoreNodeFactory {
+  // 查找组件
+  // eslint-disable-next-line no-unused-vars
+  findUiComponent(uiComponentName: string): Component
 
-    // 查找组件
-    findUiComponent(uiComponentName: string) {
-        const component = this.currentInstance.appContext.components[uiComponentName];
-        if (!component) {
-            return emptyComponent;
-        }
-        return component;
+  // 创建 表单项
+  // Col --> FormItem --> InputComponent
+  // eslint-disable-next-line no-unused-vars
+  createFormItemVNode(uiComponentNames: IUiComponentName, formItem: IFormItem, formModel: Reactive<any>): VNode
+}
+
+// 抽象， 具体实现有 UINodeFactory 实现
+export abstract class CoreNodeFactory implements ICoreNodeFactory {
+  // 查找组件
+  findUiComponent(uiComponentName: string): Component {
+    const currentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
+    const component = currentInstance.appContext.components[uiComponentName]
+    if (!component) {
+      return emptyComponent
     }
+    return component
+  }
 
-    // 创建 表单项
-    // Col --> FormItem --> InputComponent
-    createFormItemVNode(uiComponentNames: IUiComponentName, formItem: IFormItem, formModel: Reactive<any>) {
-        // 输入组件
-        const inputComponent = this.findUiComponent(uiComponentNames[formItem.formItemType]);
-
-        // col
-        const colProps = {
-            span: formItem.rowSpan
-        }
-        const colComponent = this.findUiComponent(uiComponentNames.Col);
-
-        if(formItem.rowSpan === 24) {
-            return createVNode(colComponent, colProps, () => formItem.createFormItemVNode(inputComponent, formModel))
-        }
-
-        // formItem
-        const formItemProps = {
-            label: formItem.basicConfiguration.labelName,
-            prop: formItem.dataKey
-        };
-        const formItemComponent = this.findUiComponent(uiComponentNames.FormItem);
-
-        return createVNode(
-            colComponent,
-            colProps,
-            () => createVNode(
-                formItemComponent,
-                formItemProps,
-                () => formItem.createFormItemVNode(inputComponent, formModel)
-            )
-        )
-    }
-
+  // 创建 表单项
+  // Col --> FormItem --> InputComponent
+  // eslint-disable-next-line no-unused-vars
+  abstract createFormItemVNode(uiComponentNames: IUiComponentName, formItem: IFormItem, formModel: Reactive<any>): VNode
 }

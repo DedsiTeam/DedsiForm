@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { InputFormItem, InputNumberForm, CascaderFormItem, DatePickerFormItem } from './core.js/public-api.ts';
-import { ElementPlusSelectFormItem, ElementPlusRadioFormItem, ElementPlusTableFormItem } from './packages/element-plus/public-api.ts'
+import { ElementPlusSelectFormItem, ElementPlusRadioFormItem, ElementPlusTableFormItem } from './element-plus/public-api.ts'
 import {reactive, ref} from 'vue';
 
 const item1 = new InputFormItem();

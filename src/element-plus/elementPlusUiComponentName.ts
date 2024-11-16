@@ -1,4 +1,4 @@
-import { IUiComponentName } from '../../core.ui/public-api.ts'
+import { IUiComponentName } from '../core.ui/public-api.ts'
 
 const prefix = 'El'
 

@@ -4,19 +4,16 @@ import { ISelectAttributeConfiguration, SelectAttributeConfiguration } from './c
 
 // 下拉框数据源
 export class SelectFormItem extends FormItem {
+  // 表单项名称
+  formItemType: string = 'Select'
+  // 属性配置
+  attributeConfiguration: ISelectAttributeConfiguration = new SelectAttributeConfiguration()
 
-    // 表单项名称
-    formItemType: string = 'Select';
-    // 属性配置
-    attributeConfiguration: ISelectAttributeConfiguration = new SelectAttributeConfiguration();
-
-    // 创建 输入组件需要到 props
-    createInputComponentProps() {
-        const superInputProps = super.createInputComponentProps();
-        return {
-            ...superInputProps,
-            options: this.attributeConfiguration.optionData
-        }
+  // 创建 输入组件需要到 props
+  createInputComponentProps() {
+    const superInputProps = super.createInputComponentProps()
+    return {
+      ...superInputProps
     }
-
+  }
 }

@@ -5,7 +5,7 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-import { DedsiElementPlusUi } from './packages/element-plus/public-api.ts'
+import { DedsiElementPlusUi } from './element-plus/public-api.ts'
 
 const app = createApp(App);
 
